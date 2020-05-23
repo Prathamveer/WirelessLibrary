@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import TransactionScreen from './Screens/BookTransactionScreen';
+import SearchScreen from './Screens/SearchScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+export default class App extends React.Components {
+  render(){
+    return(
+      <AppContainer></AppContainer>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -17,3 +21,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+const TabNavigator =createBottomTabNavigator({
+  Transaction:{screen:TransactionScreen},
+  Search:{screen:SearchScreen},
+
+})
+const AppContainer=createAppContainer(TabNavigator)
